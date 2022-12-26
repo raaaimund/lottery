@@ -8,34 +8,34 @@ export default function Home() {
         firstNumber: 0,
         secondNumber: 0,
         thirdNumber: 0,
-        fourthNumber: 0
+        fourthNumber: 0,
     })
 
     function onChangeFirstNumber(val: number) {
         setGuessedNumbers({
             ...guessedNumbers,
-            firstNumber: val
+            firstNumber: val,
         })
     }
 
     function onChangeSecondNumber(val: number) {
         setGuessedNumbers({
             ...guessedNumbers,
-            secondNumber: val
+            secondNumber: val,
         })
     }
 
     function onChangeThirdNumber(val: number) {
         setGuessedNumbers({
             ...guessedNumbers,
-            thirdNumber: val
+            thirdNumber: val,
         })
     }
 
     function onChangeFourthNumber(val: number) {
         setGuessedNumbers({
             ...guessedNumbers,
-            fourthNumber: val
+            fourthNumber: val,
         })
     }
 
@@ -71,10 +71,18 @@ export default function Home() {
                             </h1>
                         </div>
                         <div className={"flex flex-row justify-evenly items-center grow"}>
-                            <GuessedNumber value={guessedNumbers.firstNumber} onChange={onChangeFirstNumber}/>
-                            <GuessedNumber value={guessedNumbers.secondNumber} onChange={onChangeSecondNumber}/>
-                            <GuessedNumber value={guessedNumbers.thirdNumber} onChange={onChangeThirdNumber}/>
-                            <GuessedNumber value={guessedNumbers.fourthNumber} onChange={onChangeFourthNumber}/>
+                            <GuessedNumber value={guessedNumbers.firstNumber}
+                                           onChange={onChangeFirstNumber}
+                            />
+                            <GuessedNumber value={guessedNumbers.secondNumber}
+                                           onChange={onChangeSecondNumber}
+                            />
+                            <GuessedNumber value={guessedNumbers.thirdNumber}
+                                           onChange={onChangeThirdNumber}
+                            />
+                            <GuessedNumber value={guessedNumbers.fourthNumber}
+                                           onChange={onChangeFourthNumber}
+                            />
                         </div>
                     </>
                 }

@@ -19,6 +19,7 @@ export default function GuessedNumber(props: Props) {
                    value={currentValue}
                    onFocus={() => setCurrentValue("")}
                    onChange={onChangeEventHandler}
+                   onKeyDown={(sender) => console.log(sender.key)}
             />
         </div>
     )
