@@ -4,6 +4,9 @@ import React from "react";
 
 export default function Home() {
     const correctNumbers = [3, 4, 5, 7]
+    const secondInput = React.createRef<HTMLInputElement>()
+    const thirdInput = React.createRef<HTMLInputElement>()
+    const fourthInput = React.createRef<HTMLInputElement>()
     const [guessedNumbers, setGuessedNumbers] = React.useState({
         firstNumber: 0,
         secondNumber: 0,
@@ -16,6 +19,7 @@ export default function Home() {
             ...guessedNumbers,
             firstNumber: val,
         })
+        secondInput.current?.focus()
     }
 
     function onChangeSecondNumber(val: number) {
@@ -23,6 +27,7 @@ export default function Home() {
             ...guessedNumbers,
             secondNumber: val,
         })
+        thirdInput.current?.focus()
     }
 
     function onChangeThirdNumber(val: number) {
@@ -30,6 +35,7 @@ export default function Home() {
             ...guessedNumbers,
             thirdNumber: val,
         })
+        fourthInput.current?.focus()
     }
 
     function onChangeFourthNumber(val: number) {
@@ -39,11 +45,14 @@ export default function Home() {
         })
     }
 
-    const allNumbersAreCorrect =
-        correctNumbers.includes(guessedNumbers.firstNumber)
-        && correctNumbers.includes(guessedNumbers.secondNumber)
-        && correctNumbers.includes(guessedNumbers.thirdNumber)
-        && correctNumbers.includes(guessedNumbers.fourthNumber)
+    const allNumbersAreCorrect = [
+        guessedNumbers.firstNumber,
+        guessedNumbers.secondNumber,
+        guessedNumbers.thirdNumber,
+        guessedNumbers.fourthNumber
+    ]
+        .sort()
+        .every((guessedNumber, index) => correctNumbers.sort()[index] === guessedNumber)
 
     return (
         <>
@@ -76,12 +85,15 @@ export default function Home() {
                             />
                             <GuessedNumber value={guessedNumbers.secondNumber}
                                            onChange={onChangeSecondNumber}
+                                           reference={secondInput}
                             />
                             <GuessedNumber value={guessedNumbers.thirdNumber}
                                            onChange={onChangeThirdNumber}
+                                           reference={thirdInput}
                             />
                             <GuessedNumber value={guessedNumbers.fourthNumber}
                                            onChange={onChangeFourthNumber}
+                                           reference={fourthInput}
                             />
                         </div>
                     </>
