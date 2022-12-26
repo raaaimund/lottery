@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import GuessedNumber from "../components/GuessedNumber";
 import React from "react";
-import Image from "next/image";
 
 export default function Home() {
     const correctNumbers = [3, 4, 5, 7]
@@ -12,35 +11,31 @@ export default function Home() {
         fourthNumber: 0
     })
 
-    function onChangeFirstNumber(val: string) {
-        let newNumber = parseInt(val)
+    function onChangeFirstNumber(val: number) {
         setGuessedNumbers({
             ...guessedNumbers,
-            firstNumber: newNumber
+            firstNumber: val
         })
     }
 
-    function onChangeSecondNumber(val: string) {
-        let newNumber = parseInt(val)
+    function onChangeSecondNumber(val: number) {
         setGuessedNumbers({
             ...guessedNumbers,
-            secondNumber: newNumber
+            secondNumber: val
         })
     }
 
-    function onChangeThirdNumber(val: string) {
-        let newNumber = parseInt(val)
+    function onChangeThirdNumber(val: number) {
         setGuessedNumbers({
             ...guessedNumbers,
-            thirdNumber: newNumber
+            thirdNumber: val
         })
     }
 
-    function onChangeFourthNumber(val: string) {
-        let newNumber = parseInt(val)
+    function onChangeFourthNumber(val: number) {
         setGuessedNumbers({
             ...guessedNumbers,
-            fourthNumber: newNumber
+            fourthNumber: val
         })
     }
 
