@@ -66,7 +66,7 @@ export default function Home() {
                     !allNumbersAreCorrect &&
                     <>
                         <div className={"p-8 text-center"}>
-                            <h1 className={"font-extralight leading-tight text-9xl max-md:text-7xl max-md:mt-6 mt-0 mb-2 text-pink-600 drop-shadow-2xl shadow-pink-600"}>
+                            <h1 className={"font-extralight leading-tight text-9xl max-md:text-7xl max-md:mt-6 mt-0 text-pink-600 drop-shadow-2xl"}>
                                 3 x GLEICH
                             </h1>
                         </div>
