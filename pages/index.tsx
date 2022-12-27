@@ -1,59 +1,9 @@
 import Head from 'next/head'
-import GuessedNumber from "../components/GuessedNumber";
 import React from "react";
+import {NumbersGuessedContextProvider} from "../context/NumbersGuessedContext";
+import GuessNumbers from "../components/GuessNumbers";
 
 export default function Home() {
-    const correctNumbers = [3, 4, 5, 7]
-    const secondInput = React.createRef<HTMLInputElement>()
-    const thirdInput = React.createRef<HTMLInputElement>()
-    const fourthInput = React.createRef<HTMLInputElement>()
-    const [guessedNumbers, setGuessedNumbers] = React.useState({
-        firstNumber: 0,
-        secondNumber: 0,
-        thirdNumber: 0,
-        fourthNumber: 0,
-    })
-
-    function onChangeFirstNumber(val: number) {
-        setGuessedNumbers({
-            ...guessedNumbers,
-            firstNumber: val,
-        })
-        secondInput.current?.focus()
-    }
-
-    function onChangeSecondNumber(val: number) {
-        setGuessedNumbers({
-            ...guessedNumbers,
-            secondNumber: val,
-        })
-        thirdInput.current?.focus()
-    }
-
-    function onChangeThirdNumber(val: number) {
-        setGuessedNumbers({
-            ...guessedNumbers,
-            thirdNumber: val,
-        })
-        fourthInput.current?.focus()
-    }
-
-    function onChangeFourthNumber(val: number) {
-        setGuessedNumbers({
-            ...guessedNumbers,
-            fourthNumber: val,
-        })
-    }
-
-    const allNumbersAreCorrect = [
-        guessedNumbers.firstNumber,
-        guessedNumbers.secondNumber,
-        guessedNumbers.thirdNumber,
-        guessedNumbers.fourthNumber
-    ]
-        .sort()
-        .every((guessedNumber, index) => correctNumbers.sort()[index] === guessedNumber)
-
     return (
         <>
             <Head>
@@ -63,41 +13,9 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <main className={"flex flex-col h-full"}>
-                {
-                    allNumbersAreCorrect &&
-                    <div className={"flex flex-row justify-evenly items-center grow"}>
-                        <span className={"text-9xl text-pink-600 drop-shadow-2xl"}>
-                            PULL
-                        </span>
-                    </div>
-                }
-                {
-                    !allNumbersAreCorrect &&
-                    <>
-                        <div className={"p-8 text-center"}>
-                            <h1 className={"font-extralight leading-tight text-9xl max-md:text-7xl max-md:mt-6 mt-0 text-pink-600 drop-shadow-2xl"}>
-                                3 x GLEICH
-                            </h1>
-                        </div>
-                        <div className={"flex flex-row justify-evenly items-center grow"}>
-                            <GuessedNumber value={guessedNumbers.firstNumber}
-                                           onChange={onChangeFirstNumber}
-                            />
-                            <GuessedNumber value={guessedNumbers.secondNumber}
-                                           onChange={onChangeSecondNumber}
-                                           reference={secondInput}
-                            />
-                            <GuessedNumber value={guessedNumbers.thirdNumber}
-                                           onChange={onChangeThirdNumber}
-                                           reference={thirdInput}
-                            />
-                            <GuessedNumber value={guessedNumbers.fourthNumber}
-                                           onChange={onChangeFourthNumber}
-                                           reference={fourthInput}
-                            />
-                        </div>
-                    </>
-                }
+                <NumbersGuessedContextProvider>
+                    <GuessNumbers/>
+                </NumbersGuessedContextProvider>
             </main>
         </>
     )

@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function GuessedNumber(props: Props) {
+export default function GuessedNumberInput(props: Props) {
     function onKeyDownEventHandler(sender: React.KeyboardEvent<HTMLInputElement>) {
         if (/[0-9]/.test(sender.key)) {
             const newNumber = parseInt(sender.key)
-            props.onChange(newNumber)
+            props.onChange(newNumber, props.index)
         }
     }
 
@@ -24,6 +24,7 @@ export default function GuessedNumber(props: Props) {
 
 interface Props {
     value: number
-    onChange: (value: number) => void
+    index: number
+    onChange: (value: number, index: number) => void
     reference?: React.LegacyRef<HTMLInputElement>
 }
